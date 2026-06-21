@@ -22,6 +22,14 @@ ln_safe "$DOTFILES/config/shell/claude-deepseek-env.sh" "$HOME/.config/shell/cla
 ln_safe "$DOTFILES/config/codex/config.toml"           "$HOME/.codex/config.toml"
 ln_safe "$DOTFILES/config/ai-stack/ollama-seven.json"   "$HOME/.config/ai-stack/ollama-seven.json"
 ln_safe "$DOTFILES/config/hermes/config.yaml"           "$HOME/.hermes/config.yaml"
+ln_safe "$DOTFILES/config/scripts/openrouter_chat.py"    "$HOME/ai-assets/chat/openrouter_chat.py"
+
+echo ""
+echo "--- Desktop 启动器 ---"
+for f in "$DOTFILES"/desktop/*.command; do
+  name="$(basename "$f")"
+  ln_safe "$f" "$HOME/Desktop/$name"
+done
 
 echo ""
 echo "✅ Done. 密钥文件请手动部署:"
