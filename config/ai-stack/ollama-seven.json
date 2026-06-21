@@ -1,0 +1,53 @@
+{
+  "version": 4,
+  "updated": "2026-06-21",
+  "collab_rules": {
+    "embedding_only": ["qwen3-embedding:latest"],
+    "chat_tier_fast": ["qwen3.5:9b", "phi4-mini-reasoning:latest"],
+    "chat_tier_reason": ["deepseek-r1:8b"],
+    "chat_tier_heavy": ["qwen3:30b-a3b-instruct-2507-q4_K_M"],
+    "routing_hint": "同一时刻尽量只加载 1 个大模型 + 可选 1 个嵌入；30B 用后 ollama stop 释放显存。"
+  },
+  "models": [
+    {
+      "name": "qwen3.5:9b",
+      "tier": "primary_chat",
+      "required": true,
+      "for_open_webui": "默认「日常对话」Profile",
+      "for_goose_qclaw": "低延迟首选",
+      "notes": "通用 9B；国产#1 本地主力"
+    },
+    {
+      "name": "deepseek-r1:8b",
+      "tier": "reasoning",
+      "required": true,
+      "for_open_webui": "「推理 / 链式思考」Profile",
+      "for_goose_qclaw": "复杂逻辑、研报草稿",
+      "notes": "深度推理专用"
+    },
+    {
+      "name": "qwen3-embedding:latest",
+      "tier": "embedding",
+      "required": true,
+      "for_open_webui": "主嵌入模型",
+      "for_goose_qclaw": "RAG 检索、向量嵌入",
+      "notes": "中文嵌入质量最优"
+    },
+    {
+      "name": "phi4-mini-reasoning:latest",
+      "tier": "reasoning_light",
+      "required": false,
+      "for_open_webui": "「轻量推理」Profile",
+      "for_goose_qclaw": "短链路推理、工具调用前置",
+      "notes": "体积小，适合与 qwen3.5 同机轮换"
+    },
+    {
+      "name": "qwen3:30b-a3b-instruct-2507-q4_K_M",
+      "tier": "heavy",
+      "required": false,
+      "for_open_webui": "「高质量长文」Profile（用后停模释放）",
+      "for_goose_qclaw": "长上下文、深度写作、研报精修",
+      "notes": "MoE 30B；Q4_K_M 量化；用完必须 ollama stop 释放显存"
+    }
+  ]
+}

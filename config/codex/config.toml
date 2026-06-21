@@ -1,0 +1,68 @@
+# Codex CLI Configuration
+# Generated 2026-06-21 · Multi-model via OpenRouter
+
+model = "deepseek/deepseek-v4-pro"
+model_provider = "openrouter"
+model_reasoning_effort = "high"
+
+[model_providers.openrouter]
+name = "OpenRouter"
+base_url = "https://openrouter.ai/api/v1"
+env_key = "OPENROUTER_API_KEY"
+wire_api = "responses"
+
+# ── 中国区可用 Profiles ──────────────────────────
+# ⚠️ OpenAI / Anthropic / Google 全系 403（中国封锁）
+
+# --- 主力 ---
+[profiles.ds]
+model = "deepseek/deepseek-v4-pro"
+model_provider = "openrouter"
+model_reasoning_effort = "high"
+
+# --- 国产最强 ---
+[profiles.qwen]
+model = "qwen/qwen3.7-max"
+model_provider = "openrouter"
+
+[profiles.glm]
+model = "z-ai/glm-5.2"
+model_provider = "openrouter"
+
+[profiles.kimi]
+model = "moonshotai/kimi-k2.6"
+model_provider = "openrouter"
+
+# --- 国际可用 ---
+[profiles.mistral]
+model = "mistralai/mistral-large-2512"
+model_provider = "openrouter"
+
+[profiles.nemo]
+model = "nvidia/nemotron-3-super-120b-a12b"
+model_provider = "openrouter"
+
+[profiles.grok]
+model = "x-ai/grok-4.3"
+model_provider = "openrouter"
+
+# --- 轻量备选 ---
+[profiles.flash]
+model = "deepseek/deepseek-v4-flash"
+model_provider = "openrouter"
+
+[profiles.nemo_nano]
+model = "nvidia/nemotron-3-nano-30b-a3b:free"
+model_provider = "openrouter"
+
+[features]
+oss = true
+
+[shell_environment_policy]
+inherit = "all"
+
+[projects."/Users/sheiky"]
+trust_level = "trusted"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
